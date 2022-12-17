@@ -6,18 +6,16 @@ class IteratorClass {
         this.checkDataType(data);
     }
     
-    checkDataType(data) { // Проверяем получен массив или объект
-        if (Array.isArray(data)) { // Перебор массива
+    checkDataType(data) {
+        if (Array.isArray(data)) { 
             this.collectionLength = this.data.length - 1;
             this.collection = this.data;
             this.type = 'array';
-        } else if (!Array.isArray(data) && typeof data == 'object') { // Перебор объекта
+        } else if (!Array.isArray(data) && typeof data == 'object') { 
             this.collectionLength = Object.keys(this.data).length - 1;
             this.collection = Object.values(this.data);
             this.type = 'object';
-        } else {
-            throw new Error(`${this.constructor.name} получил data которую не может итерировать - ${typeof data}`)
-        }
+        } 
     }
     
     next() {
@@ -47,8 +45,6 @@ class IteratorClass {
     }
 }
 
-
-// usage Iterator
 console.log('Итерируем массив:');
 const gen = new IteratorClass(['Hi', 'Hello', 'Bye']);
 console.log(gen.next());
@@ -77,7 +73,7 @@ console.log(obj.prev());
 console.log(obj.prev());
 console.log(obj.next());
 
-console.log('Итерируем строку:'); // выдаст ошибку, итератор не настроен на строки
+console.log('Итерируем строку:');
 const string = new IteratorClass('1hello');
 console.log(string.next());
 console.log(string.next());
